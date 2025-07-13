@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transfer Dosa | FR3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(145deg, #e2e8f0, #f8fafc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 420px;
+    }
+    .user-info {
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .user-info h2 {
+      margin-bottom: 0.3rem;
+      font-size: 20px;
+      color: #333;
+    }
+    .user-info span {
+      font-size: 14px;
+      color: #555;
+    }
+    h1 { text-align: center; margin-bottom: 1.2rem; font-size: 22px; }
+    input, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    button {
+      background: #ef4444;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #dc2626; }
+    .result {
+      margin-top: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="user-info">
+    <h2 id="currentUser">👤 Nama Pengguna: <span style="font-weight: normal;" id="displayName">Anonim</span></h2>
+    <span>Transfer dosa dengan penuh kelicikan 😹</span>
+  </div>
+
+  <h1>Transfer Dosa 👿</h1>
+  <input type="text" id="from" placeholder="Nama pengirim dosa" oninput="updateDisplayName()" />
+  <input type="text" id="to" placeholder="Nama penerima dosa" />
+  <input type="number" id="amount" placeholder="Jumlah dosa (misalnya 1000)" />
+  <button onclick="transferDosa()">Transfer Sekarang</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  function updateDisplayName() {
+    const name = document.getElementById("from").value.trim();
+    document.getElementById("displayName").innerText = name || "Anonim";
+  }
+
+  function transferDosa() {
+    const from = document.getElementById("from").value.trim();
+    const to = document.getElementById("to").value.trim();
+    const amount = parseInt(document.getElementById("amount").value);
+    const result = document.getElementById("result");
+
+    if (!from || !to || !amount || amount <= 0) {
+      result.innerHTML = "⚠️ Semua kolom wajib diisi dengan benar, meskipun niatmu jahat.";
+      result.style.color = "red";
+      return;
+    }
+
+    result.style.color = "#b91c1c"; // merah berdosa
+    result.innerHTML = `😈 <b>${amount.toLocaleString()} dosa</b> berhasil dilempar dari <b>${from}</b> ke <b>${to}</b>. Semoga dia nggak sadar... 😂`;
+  }
+</script>
+
+</body>
+</html>
